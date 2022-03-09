@@ -46,7 +46,7 @@ function InputForm({ teams }) {
       teambudget: budget,
     };
     console.log(name, budget);
-    const data = await graphQLClient.request(mutation, variables);
+    await graphQLClient.request(mutation, variables);
     window.location.reload();
   };
   return (
