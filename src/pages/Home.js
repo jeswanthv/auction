@@ -1,5 +1,4 @@
-import request from 'graphql-request';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Card from '../components/Card';
 import NavBar from '../components/NavBar';
 

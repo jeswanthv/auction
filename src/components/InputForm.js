@@ -47,7 +47,7 @@ function InputForm({ teams }) {
     };
     console.log(name, budget);
     const data = await graphQLClient.request(mutation, variables);
-    console.log(JSON.stringify(data, undefined, 2));
+    window.location.reload();
   };
   return (
     <div class='my-32 w-full max-w-xs mx-auto '>
