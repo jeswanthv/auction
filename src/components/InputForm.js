@@ -12,6 +12,7 @@ const TeamNames = [
   'Punjab Kings',
   'Gujarat Titans',
   'Lucknow Super Giants',
+  'Delhi Capitals',
 ];
 
 function InputForm({ teams }) {
