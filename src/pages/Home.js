@@ -38,7 +38,7 @@ function Home({ teams }) {
         <>
           <NavBar />
 
-          <div className='mx-auto max-w-4xl m-10 grid grid-cols-1 gap-5 lg:grid-cols-3'>
+          <div className=' max-w-full mx-10 m-10 grid grid-cols-1 gap-5 lg:grid-cols-5'>
             {teams.map(({ id, teamName, teamBudget, teamPhoto }) => (
               <>
                 <Card
