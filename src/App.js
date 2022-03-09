@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import request from 'graphql-request';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import EditAuction from './pages/EditAuction';
+import Home from './pages/Home';
 
 function App() {
+  const [teams, setTeams] = useState(null);
+
+  useEffect(() => {
+    const fetchteams = async () => {
+      const { teams } = await request(
+        'https://api-ap-south-1.graphcms.com/v2/cl0dmxg5o0u9g01xsht880hhv/master',
+        `
+      { 
+        teams {
+          id
+          teamName
+          teamBudget
+          teamPhoto{
+            id
+            url
+          }
+        }
+      }
+    `
+      );
+
+      setTeams(teams);
+    };
+
+    fetchteams();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home teams={teams} />} />
+        <Route path='/edit-auction' element={<EditAuction teams={teams} />} />
+      </Routes>
+    </Router>
   );
 }
 
